@@ -1,13 +1,13 @@
 # EXPERIMENT-02-INTERFACING-A-DIGITAL-INPUT-OUTPUT-TO-IOT-DEVELOPMENT-BOARD
 
 
-**DATE:**
+**DATE: 26-04-2025**
 
-**NAME:**
+**NAME: THAMIZHARASI. G**
 
-**ROLL NO:**
+**ROLL NO: 212224100059**
 
-**DEPARTMENT:**
+**DEPARTMENT: CSE CYBER SECURITY**
 
 ## Aim
 
@@ -101,11 +101,49 @@ IR technology is used in a wide range of wireless applications which includes re
 
 ## STM 32 CUBE PROGRAM
 
-```
-// Your STM 32 CUBE Program code here
+```#include "main.h"
+#include "stdbool.h"
+bool IRSENSOR;
+void  IRPAIR();
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+int main(void)
+{
+ 
+  HAL_Init();                                   
+  SystemClock_Config();
+  MX_GPIO_Init();
+ 
+  while (1)
+  {
+    IRPAIR();
+  }
+ 
+}
+void IRPAIR()
+{
+	IRSENSOR=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4);
+		if(IRSENSOR==0)
+		{
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
+			HAL_Delay(1000);
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+			HAL_Delay(1000);
+		}
+		else
+		{
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+			HAL_Delay(1000);
+		}
+}
 ```
 
 ## OUTPUT
+
+![Screenshot 2025-04-26 122517](https://github.com/user-attachments/assets/580c431d-8d91-41d1-a37f-eec01b945c62)
+
+![Screenshot 2025-04-26 122526](https://github.com/user-attachments/assets/380ad222-e959-41c3-a290-474e2be8efc3)
 
 ## Result
 
